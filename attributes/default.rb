@@ -38,7 +38,7 @@ default['wordpress']['db']['collate'] = ''
 
 default['wordpress']['vault']['admins'] = 'myadmins'
 default['wordpress']['vault']['data_bag'] = 'mysql'
-default['wordpress']['vault']['item_name'] = node['name']
+default['wordpress']['vault']['item_name'] = node['fqdn']
 case node['platform']
 when 'ubuntu'
   case node['platform_version']

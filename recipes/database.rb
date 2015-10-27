@@ -40,8 +40,8 @@ else
   chef_vault_secret node['wordpress']['vault']['item_name'] do
     data_bag node['wordpress']['vault']['data_bag']
     admins node['wordpress']['vault']['admins']
-    clients "name:#{node['name']}"
-    search "name:#{node['name']}"
+    clients "name:#{node['fqdn']}"
+    search "name:#{node['fqdn']}"
     raw_data({
       'root_password' => db['root_password'].nil? ? random_password : db['root_password'], 
       'pass' => db['pass'].nil? ? random_password : db['pass'] })

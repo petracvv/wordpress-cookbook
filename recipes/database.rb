@@ -48,7 +48,7 @@ else
     action :nothing
   end.run_action(:create_if_missing)
 
-  dbsecure = chef_vault_item(node['wordpress']['vault']['data_bag'], node['item_name'])
+  dbsecure = chef_vault_item(node['wordpress']['vault']['data_bag'], node['wordpress']['vault']['item_name'])
 end
 
 if is_local_host? db['host']

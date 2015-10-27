@@ -19,6 +19,8 @@
 
 include_recipe "wordpress::database"
 
+dbsecure = chef_vault_item(node['wordpress']['vault']['data_bag'], node['wordpress']['vault']['item_name'])
+
 ::Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 node.set_unless['wordpress']['keys']['auth'] = random_password
 node.set_unless['wordpress']['keys']['secure_auth'] = random_password
@@ -67,7 +69,7 @@ template "#{node['wordpress']['dir']}/wp-config.php" do
   variables(
     :db_name           => node['wordpress']['db']['name'],
     :db_user           => node['wordpress']['db']['user'],
-    :db_password       => node['wordpress']['db']['pass'],
+    :db_password       => dbsecure['pass'],
     :db_host           => node['wordpress']['db']['host'],
     :db_prefix         => node['wordpress']['db']['prefix'],
     :db_charset        => node['wordpress']['db']['charset'],

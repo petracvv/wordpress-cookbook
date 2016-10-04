@@ -25,7 +25,7 @@
 # General settings
 default['wordpress']['version'] = 'latest'
 
-default['wordpress']['db']['root_password'] = 'my_root_password'
+default['wordpress']['db']['root_password'] = nil
 default['wordpress']['db']['instance_name'] = 'default'
 default['wordpress']['db']['name'] = "wordpressdb"
 default['wordpress']['db']['user'] = "wordpressuser"
@@ -35,6 +35,10 @@ default['wordpress']['db']['host'] = 'localhost'
 default['wordpress']['db']['port'] = '3306'  # Must be a string
 default['wordpress']['db']['charset'] = 'utf8'
 default['wordpress']['db']['collate'] = ''
+
+default['wordpress']['vault']['admins'] = 'myadmins'
+default['wordpress']['vault']['data_bag'] = 'mysql'
+default['wordpress']['vault']['item_name'] = node['fqdn']
 case node['platform']
 when 'ubuntu'
   case node['platform_version']

@@ -84,6 +84,7 @@ template "#{node['wordpress']['dir']}/wp-config.php" do
     :nonce_salt        => node['wordpress']['salt']['nonce'],
     :lang              => node['wordpress']['languages']['lang'],
     :allow_multisite   => node['wordpress']['allow_multisite'],
+    :behind_ssl_termination => node['wordpress']['behind_ssl_termination'],
     :wp_config_options => node['wordpress']['wp_config_options']
   )
   owner node['wordpress']['install']['user']

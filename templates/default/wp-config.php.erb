@@ -89,6 +89,15 @@ define( 'WP_ALLOW_MULTISITE', true );
 define( '<%= key %>', <%= value %> );
 <% end %>
 
+<% if @behind_ssl_termination %>
+/* SSL Terminated by LB */
+if($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'){
+
+    $_SERVER['HTTPS'] = 'on';
+    $_SERVER['SERVER_PORT'] = 443;
+}
+<% end %>
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */

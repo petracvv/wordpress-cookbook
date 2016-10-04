@@ -56,6 +56,7 @@ else
 end
 
 default['wordpress']['allow_multisite'] = false
+default['wordpress']['behind_ssl_termination'] = false
 
 default['wordpress']['wp_config_options'] = {}
 
